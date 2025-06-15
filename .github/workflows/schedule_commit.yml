@@ -14,7 +14,7 @@ jobs:
 
       - name: Make a commit (by 22f1001679@ds.study.iitm.ac.in)
         run: |
-          echo "Last run: $(date)" > last_run.txt
+          echo "Last run: $(date '+%Y-%m-%d %H:%M:%S')" > last_run.txt
           git config --global user.email "22f1001679@ds.study.iitm.ac.in"
           git config --global user.name "GitHub Action Bot"
           git add last_run.txt
