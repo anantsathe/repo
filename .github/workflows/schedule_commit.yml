@@ -3,7 +3,10 @@ name: Daily Commit Workflow
 on:
   schedule:
     - cron: '0 0 * * *'  # Runs daily at midnight UTC
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:      # Manual trigger
+
+permissions:
+  contents: write         # 🔥 This line allows pushing changes
 
 jobs:
   daily-commit:
@@ -18,5 +21,5 @@ jobs:
           git config --global user.email "22f1001679@ds.study.iitm.ac.in"
           git config --global user.name "GitHub Action Bot"
           git add last_run.txt
-          git commit -m "Automated commit from GitHub Actions on $(date '+%Y-%m-%d %H:%M:%S')"
+          git commit -m "Automated commit from GitHub Actions on $(date '+%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push
